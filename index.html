@@ -971,7 +971,8 @@
                 renderHistory();
             } else if (tabName === 'goals') {
                 renderGoals();
-        if (localStorage.getItem('ihsan_parents_current_action')) currentAction = localStorage.getItem('ihsan_parents_current_action');
+            if (localStorage.getItem('ihsan_parents_current_action')) currentAction = localStorage.getItem('ihsan_parents_current_action');
+        }
             }
         }
 
@@ -1326,8 +1327,15 @@
             }).join('');
         }
 
-        // Initialize
-        loadData();
+
+        // Ensure DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            initApp();
+        });
+
+        function initApp() {
+            loadData();
         
         document.getElementById('today-date').textContent = new Date().toLocaleDateString('ar-EG', {
             weekday: 'long',
@@ -1339,7 +1347,8 @@
         renderDailyQuestions();
         renderWeeklyAssessment();
         renderGoals();
-        if (localStorage.getItem('ihsan_parents_current_action')) currentAction = localStorage.getItem('ihsan_parents_current_action');
+            if (localStorage.getItem('ihsan_parents_current_action')) currentAction = localStorage.getItem('ihsan_parents_current_action');
+        }
     </script>
 </body>
 </html>
